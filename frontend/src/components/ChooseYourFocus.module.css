@@ -1,17 +1,19 @@
 /* ChooseYourFocus.module.css
-   Shares the visual language of HomeHero (Oswald + Inter, blue/yellow
-   accents) against your existing #0b0f19 page background. */
+   White + Gold Athletic Theme */
 
 .section {
-  --focus-bg: #0b0f19;
-  --focus-surface: #131826;
-  --focus-surface-hover: #171d2e;
-  --focus-border: rgba(245, 247, 250, 0.08);
-  --focus-white: #f5f7fa;
-  --focus-muted: #8892a0;
-  --focus-blue: #3d7fff;
-  --focus-blue-soft: rgba(61, 127, 255, 0.14);
-  --focus-yellow: #ffc542;
+  /* Zero navy — pure carbon black tones */
+  --focus-bg: #050505;                        /* Pitch black background */
+  --focus-surface: #121212;                   /* Rich dark charcoal card */
+  --focus-surface-hover: #1c1c1c;             /* Slightly lighter hover state */
+  --focus-border: rgba(255, 255, 255, 0.12);  /* Subtle white border */
+  --focus-white: #ffffff;
+  --focus-muted: #a3a3a3;                     /* Cool neutral grey */
+
+  /* Gold Color Palette */
+  --focus-gold: #f59e0b;                      
+  --focus-gold-bright: #fbbf24;               
+  --focus-gold-soft: rgba(245, 158, 11, 0.12);
 
   position: relative;
   width: 100%;
@@ -33,11 +35,11 @@
 .eyebrow {
   margin: 0 0 0.6rem;
   font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.26em;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.22em;
   text-transform: uppercase;
-  color: var(--focus-blue);
+  color: var(--focus-gold);
 }
 
 .heading {
@@ -79,45 +81,33 @@
   border-radius: 12px;
   cursor: pointer;
   font-family: inherit;
-  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+  transition: border-color 0.25s ease, background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
 }
 
 .card:hover {
   background: var(--focus-surface-hover);
+  border-color: rgba(255, 255, 255, 0.25);
   transform: translateY(-3px);
 }
 
 .card:focus-visible {
-  outline: 3px solid var(--focus-yellow);
+  outline: 3px solid var(--focus-gold);
   outline-offset: 2px;
 }
 
-/* General active card look */
-.cardActive {
-  border-color: var(--focus-blue);
-  background: var(--focus-blue-soft);
-}
-
-/* Optional: Make each active card glow with its own unique personality */
-.card[data-path="strength"].cardActive {
-  border-color: #3d7fff; /* Blue */
-  background: rgba(61, 127, 255, 0.16);
-}
-
-.card[data-path="performance"].cardActive {
-  border-color: #ffc542; /* Yellow highlight */
-  background: rgba(255, 197, 66, 0.12);
-}
-
-.card[data-path="team"].cardActive {
-  border-color: #2ed573; /* Green highlight */
-  background: rgba(46, 213, 115, 0.12);
+/* Active Card Styling - Clean Crisp White Border with Gold Glow */
+.cardActive,
+.card[data-path].cardActive {
+  border-color: var(--focus-white);
+  background: var(--focus-gold-soft);
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.15), inset 0 0 0 1px var(--focus-white);
 }
 
 .cardActive:hover {
-  background: var(--focus-blue-soft);
+  background: var(--focus-gold-soft);
 }
 
+/* Icon Badges */
 .iconBadge {
   display: inline-flex;
   align-items: center;
@@ -125,14 +115,14 @@
   width: 3rem;
   height: 3rem;
   border-radius: 10px;
-  background: rgba(245, 247, 250, 0.06);
+  background: rgba(255, 255, 255, 0.06);
   color: var(--focus-muted);
-  transition: background-color 0.2s ease, color 0.2s ease;
+  transition: background-color 0.25s ease, color 0.25s ease;
 }
 
 .cardActive .iconBadge {
-  background: var(--focus-blue);
-  color: var(--focus-white);
+  background: var(--focus-gold);
+  color: #0b0f19; /* High-contrast dark icon inside gold badge */
 }
 
 .icon {
@@ -156,38 +146,16 @@
   color: var(--focus-muted);
 }
 
-/* ---------- Connector pointer between the active card and the preview ---------- */
-
-.pointer {
-  position: relative;
-  width: 100%;
-  max-width: 68rem;
-  height: 1.5rem;
-}
-
-.pointer::after {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: var(--pointer-pos, 16.66%);
-  width: 14px;
-  height: 14px;
-  background: var(--focus-blue-soft);
-  border-left: 1px solid var(--focus-blue);
-  border-top: 1px solid var(--focus-blue);
-  transform: translateX(-50%) rotate(45deg);
-  transition: left 0.3s ease;
-}
-
 /* ---------- Preview panel ---------- */
 
 .preview {
   width: 100%;
   max-width: 68rem;
-  background: var(--focus-blue-soft);
-  border: 1px solid var(--focus-blue);
+  background: var(--focus-surface);
+  border: 1px solid rgba(255, 255, 255, 0.18);
   border-radius: 14px;
   padding: 2.5rem;
+  margin-top: 2rem;
   overflow: hidden;
 }
 
@@ -212,13 +180,13 @@
 
 .previewLabel {
   display: block;
-  font-family: 'Inter', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 0.78rem;
-  letter-spacing: 0.22em;
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  font-size: 1.25rem;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--focus-blue);
-  margin-bottom: 1rem;
+  color: var(--focus-gold-bright);
+  margin-bottom: 1.25rem;
 }
 
 .featureList {
@@ -227,12 +195,12 @@
   list-style: none;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  gap: 0.75rem;
 }
 
 .featureItem {
   position: relative;
-  padding-left: 1.4rem;
+  padding-left: 1.5rem;
   font-family: 'Inter', system-ui, sans-serif;
   font-size: 1rem;
   color: var(--focus-white);
@@ -247,20 +215,20 @@
   width: 7px;
   height: 7px;
   border-radius: 50%;
-  background: var(--focus-yellow);
+  background: var(--focus-gold);
 }
 
-/* Replacing .statCard, .statIcon, .statLabel, .statValue */
+/* ---------- Action Image Card ---------- */
 
 .imageCard {
   width: 100%;
   min-width: 18rem;
   max-width: 24rem;
-  height: 15rem; /* Increased slightly to give the subject room to breathe */
+  height: 15rem;
   border-radius: 12px;
   overflow: hidden;
   border: 1px solid var(--focus-border);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
 }
 
 .previewImage {
@@ -268,26 +236,27 @@
   height: 100%;
   object-fit: cover;
   display: block;
-  /* Default fallback position focusing slightly higher up */
-  object-position: center 25%; 
+  object-position: center 25%;
+  transition: transform 0.4s ease;
 }
 
-/* Custom focal positions per photo so the main subject is highlighted */
+/* Custom focal positions per photo */
 .imageCard[data-path="strength"] .previewImage {
-  object-position: center 20%; /* Keeps the barbell & lifter's head perfectly framed */
+  object-position: center 20%;
 }
 
 .imageCard[data-path="performance"] .previewImage {
-  object-position: center 30%; /* Focuses on the runners' upper bodies and expressions */
+  object-position: center 30%;
 }
 
 .imageCard[data-path="team"] .previewImage {
-  object-position: right 25%; /* Keeps the coach and laptop centered in frame */
+  object-position: right 25%;
 }
 
 .imageCard:hover .previewImage {
   transform: scale(1.04);
 }
+
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {
@@ -295,16 +264,13 @@
     grid-template-columns: 1fr;
   }
 
-  .pointer {
-    display: none;
-  }
-
   .previewInner {
     grid-template-columns: 1fr;
   }
 
-  .statCard {
+  .imageCard {
     width: 100%;
+    max-width: 100%;
   }
 }
 
@@ -322,11 +288,12 @@
 
 @media (prefers-reduced-motion: reduce) {
   .card,
-  .pointer {
+  .previewImage {
     transition: none;
   }
 
-  .card:hover {
+  .card:hover,
+  .imageCard:hover .previewImage {
     transform: none;
   }
 

@@ -64,10 +64,10 @@ const PATHS = [
     Icon: SpeedIcon,
     image: '/images/racing.jpg',
     features: [
-      '40-yard dash and sprint split timing',
-      'Agility drill timers for cone and ladder work',
-      'Vertical jump and broad jump tracking',
-      'On-field metric dashboards by position',
+      'Sport-specific training notes and practice logs',
+      'Positional performance tracking tailored to your role',
+      'Customized drill timers for agility and reaction work',
+      'Detailed coach feedback on form and game readiness',
     ],
   },
   {
