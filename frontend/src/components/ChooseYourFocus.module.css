@@ -250,40 +250,44 @@
   background: var(--focus-yellow);
 }
 
-.statCard {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  min-width: 10rem;
-  padding: 1.5rem;
-  background: var(--focus-bg);
-  border: 1px solid var(--focus-border);
+/* Replacing .statCard, .statIcon, .statLabel, .statValue */
+
+.imageCard {
+  width: 100%;
+  min-width: 18rem;
+  max-width: 24rem;
+  height: 15rem; /* Increased slightly to give the subject room to breathe */
   border-radius: 12px;
+  overflow: hidden;
+  border: 1px solid var(--focus-border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
 }
 
-.statIcon {
-  width: 1.75rem;
-  height: 1.75rem;
-  color: var(--focus-blue);
+.previewImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  /* Default fallback position focusing slightly higher up */
+  object-position: center 25%; 
 }
 
-.statLabel {
-  font-family: 'Inter', system-ui, sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 0.14em;
-  text-transform: uppercase;
-  color: var(--focus-muted);
+/* Custom focal positions per photo so the main subject is highlighted */
+.imageCard[data-path="strength"] .previewImage {
+  object-position: center 20%; /* Keeps the barbell & lifter's head perfectly framed */
 }
 
-.statValue {
-  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
-  font-weight: 600;
-  font-size: 1.6rem;
-  color: var(--focus-white);
+.imageCard[data-path="performance"] .previewImage {
+  object-position: center 30%; /* Focuses on the runners' upper bodies and expressions */
 }
 
+.imageCard[data-path="team"] .previewImage {
+  object-position: right 25%; /* Keeps the coach and laptop centered in frame */
+}
+
+.imageCard:hover .previewImage {
+  transform: scale(1.04);
+}
 /* ---------- Responsive ---------- */
 
 @media (max-width: 860px) {

@@ -49,7 +49,7 @@ const PATHS = [
     title: 'Strength & Conditioning',
     description: 'Weight room programming, 1RM tracking, and volume analytics.',
     Icon: DumbbellIcon,
-    stat: { label: 'Squat 1RM', value: '315 lb' },
+    image: '/images/lift.jpg',
     features: [
       'Auto-calculated 1-rep max from working sets',
       'Volume load tracking across every session',
@@ -62,7 +62,7 @@ const PATHS = [
     title: 'Sports Performance',
     description: 'Speed, agility, and on-field metrics for competitive athletes.',
     Icon: SpeedIcon,
-    stat: { label: '40-Yd Split', value: '4.52s' },
+    image: '/images/racing.jpg',
     features: [
       '40-yard dash and sprint split timing',
       'Agility drill timers for cone and ladder work',
@@ -75,7 +75,7 @@ const PATHS = [
     title: 'Team Management',
     description: 'Rosters, program assignments, and coaching tools in one place.',
     Icon: ClipboardIcon,
-    stat: { label: 'Active Roster', value: '24 Athletes' },
+    image: '/images/coaching.jpg',
     features: [
       'Roster and position management for the whole team',
       'Assign programs to individuals or full squads',
@@ -137,11 +137,13 @@ export default function ChooseYourFocus() {
             </ul>
           </div>
 
-          <div className={styles.statCard}>
-            <active.Icon className={styles.statIcon} />
-            <span className={styles.statLabel}>{active.stat.label}</span>
-            <span className={styles.statValue}>{active.stat.value}</span>
-          </div>
+          <div className={styles.imageCard} data-path={active.id}>
+  <img 
+    src={active.image} 
+    alt={active.title} 
+    className={styles.previewImage} 
+  />
+</div>
         </div>
       </div>
     </section>
