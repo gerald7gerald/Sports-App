@@ -1,0 +1,332 @@
+/* ChooseYourFocus.module.css
+   Shares the visual language of HomeHero (Oswald + Inter, blue/yellow
+   accents) against your existing #0b0f19 page background. */
+
+.section {
+  --focus-bg: #0b0f19;
+  --focus-surface: #131826;
+  --focus-surface-hover: #171d2e;
+  --focus-border: rgba(245, 247, 250, 0.08);
+  --focus-white: #f5f7fa;
+  --focus-muted: #8892a0;
+  --focus-blue: #3d7fff;
+  --focus-blue-soft: rgba(61, 127, 255, 0.14);
+  --focus-yellow: #ffc542;
+
+  position: relative;
+  width: 100%;
+  background: var(--focus-bg);
+  padding: 5.5rem 1.5rem 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  text-align: center;
+  max-width: 40rem;
+  margin-bottom: 3rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--focus-blue);
+}
+
+.heading {
+  margin: 0 0 0.75rem;
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--focus-white);
+}
+
+.subheading {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  color: var(--focus-muted);
+}
+
+/* ---------- Card grid ---------- */
+
+.cardGrid {
+  width: 100%;
+  max-width: 68rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.25rem;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.9rem;
+  text-align: left;
+  padding: 1.75rem 1.5rem;
+  background: var(--focus-surface);
+  border: 1px solid var(--focus-border);
+  border-radius: 12px;
+  cursor: pointer;
+  font-family: inherit;
+  transition: border-color 0.2s ease, background-color 0.2s ease, transform 0.2s ease;
+}
+
+.card:hover {
+  background: var(--focus-surface-hover);
+  transform: translateY(-3px);
+}
+
+.card:focus-visible {
+  outline: 3px solid var(--focus-yellow);
+  outline-offset: 2px;
+}
+
+/* General active card look */
+.cardActive {
+  border-color: var(--focus-blue);
+  background: var(--focus-blue-soft);
+}
+
+/* Optional: Make each active card glow with its own unique personality */
+.card[data-path="strength"].cardActive {
+  border-color: #3d7fff; /* Blue */
+  background: rgba(61, 127, 255, 0.16);
+}
+
+.card[data-path="performance"].cardActive {
+  border-color: #ffc542; /* Yellow highlight */
+  background: rgba(255, 197, 66, 0.12);
+}
+
+.card[data-path="team"].cardActive {
+  border-color: #2ed573; /* Green highlight */
+  background: rgba(46, 213, 115, 0.12);
+}
+
+.cardActive:hover {
+  background: var(--focus-blue-soft);
+}
+
+.iconBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 10px;
+  background: rgba(245, 247, 250, 0.06);
+  color: var(--focus-muted);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.cardActive .iconBadge {
+  background: var(--focus-blue);
+  color: var(--focus-white);
+}
+
+.icon {
+  width: 1.6rem;
+  height: 1.6rem;
+}
+
+.cardTitle {
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.15rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--focus-white);
+}
+
+.cardDescription {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--focus-muted);
+}
+
+/* ---------- Connector pointer between the active card and the preview ---------- */
+
+.pointer {
+  position: relative;
+  width: 100%;
+  max-width: 68rem;
+  height: 1.5rem;
+}
+
+.pointer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: var(--pointer-pos, 16.66%);
+  width: 14px;
+  height: 14px;
+  background: var(--focus-blue-soft);
+  border-left: 1px solid var(--focus-blue);
+  border-top: 1px solid var(--focus-blue);
+  transform: translateX(-50%) rotate(45deg);
+  transition: left 0.3s ease;
+}
+
+/* ---------- Preview panel ---------- */
+
+.preview {
+  width: 100%;
+  max-width: 68rem;
+  background: var(--focus-blue-soft);
+  border: 1px solid var(--focus-blue);
+  border-radius: 14px;
+  padding: 2.5rem;
+  overflow: hidden;
+}
+
+.previewInner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 2.5rem;
+  align-items: center;
+  animation: focusFadeIn 0.35s ease;
+}
+
+@keyframes focusFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.previewLabel {
+  display: block;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--focus-blue);
+  margin-bottom: 1rem;
+}
+
+.featureList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.featureItem {
+  position: relative;
+  padding-left: 1.4rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  color: var(--focus-white);
+  line-height: 1.5;
+}
+
+.featureItem::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--focus-yellow);
+}
+
+.statCard {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 10rem;
+  padding: 1.5rem;
+  background: var(--focus-bg);
+  border: 1px solid var(--focus-border);
+  border-radius: 12px;
+}
+
+.statIcon {
+  width: 1.75rem;
+  height: 1.75rem;
+  color: var(--focus-blue);
+}
+
+.statLabel {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--focus-muted);
+}
+
+.statValue {
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.6rem;
+  color: var(--focus-white);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 860px) {
+  .cardGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .pointer {
+    display: none;
+  }
+
+  .previewInner {
+    grid-template-columns: 1fr;
+  }
+
+  .statCard {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .section {
+    padding: 4rem 1.25rem 4.5rem;
+  }
+
+  .preview {
+    padding: 1.75rem;
+  }
+}
+
+/* ---------- Accessibility: reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .card,
+  .pointer {
+    transition: none;
+  }
+
+  .card:hover {
+    transform: none;
+  }
+
+  .previewInner {
+    animation: none;
+  }
+}

@@ -1,12 +1,11 @@
-import React from 'react';
 import HomeHero from './components/HomeHero';
+import ChooseYourFocus from './components/ChooseYourFocus';
 
-function App() {
+export default function App() {
   return (
-    <div>
+    <>
       <HomeHero />
-    </div>
+      <ChooseYourFocus />
+    </>
   );
 }
-
-export default App;
