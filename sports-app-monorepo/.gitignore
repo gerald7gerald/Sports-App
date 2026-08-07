@@ -1,0 +1,19 @@
+# Dependencies
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# Env files (Secrets)
+.env
+.env.local
+*.env
+backend/.env
+frontend/.env
+
+# Build outputs
+frontend/dist/
+backend/dist/
+
+# System logs
+*.log
+.DS_Store
