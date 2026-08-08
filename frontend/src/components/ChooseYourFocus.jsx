@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import styles from './ChooseYourFocus.module.css';
 
 /* ---------- Inline icons (no external icon library needed) ---------- */
@@ -48,6 +49,7 @@ const PATHS = [
     id: 'strength',
     title: 'Strength & Conditioning',
     description: 'Weight room programming, 1RM tracking, and volume analytics.',
+    route: '/workouts/strength',
     Icon: DumbbellIcon,
     image: '/images/lift.jpg',
     features: [
@@ -61,6 +63,7 @@ const PATHS = [
     id: 'performance',
     title: 'Sports Performance',
     description: 'Speed, agility, and on-field metrics for competitive athletes.',
+    route: '/workouts/sports',
     Icon: SpeedIcon,
     image: '/images/racing.jpg',
     features: [
@@ -74,6 +77,7 @@ const PATHS = [
     id: 'team',
     title: 'Team Management',
     description: 'Rosters, program assignments, and coaching tools in one place.',
+    route: '/workouts/team',
     Icon: ClipboardIcon,
     image: '/images/coaching.jpg',
     features: [
@@ -135,15 +139,19 @@ export default function ChooseYourFocus() {
                 </li>
               ))}
             </ul>
+
+            <Link to={active.route} className={styles.exploreButton}>
+              Explore {active.title} →
+            </Link>
           </div>
 
           <div className={styles.imageCard} data-path={active.id}>
-  <img 
-    src={active.image} 
-    alt={active.title} 
-    className={styles.previewImage} 
-  />
-</div>
+            <img
+              src={active.image}
+              alt={active.title}
+              className={styles.previewImage}
+            />
+          </div>
         </div>
       </div>
     </section>
