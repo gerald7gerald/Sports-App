@@ -1,0 +1,273 @@
+/* HowItWorks.module.css
+   Design system per brief: dark charcoal background, #131826 card
+   surfaces, white + gold/amber accents, Oswald headers / Inter body. */
+
+/* HowItWorks.module.css */
+
+.section {
+  /* Pitch Black & Carbon Charcoal (replaces the navy tones) */
+  --hiw-bg: #050505;                        /* Pitch black section background */
+  --hiw-surface: #121212;                   /* Rich charcoal card surfaces */
+  --hiw-border: rgba(255, 255, 255, 0.12);  /* Subtle border */
+  --hiw-white: #ffffff;
+  --hiw-muted: #a3a3a3;                     /* Cool neutral grey text */
+  --hiw-gold: #f59e0b;                      /* Gold accent */
+  --hiw-gold-soft: rgba(245, 158, 11, 0.12);
+
+  width: 100%;
+  background: var(--hiw-bg);
+  padding: 6rem 1.5rem 6.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* ---------- Header ---------- */
+
+.header {
+  text-align: center;
+  max-width: 38rem;
+  margin-bottom: 4rem;
+}
+
+.eyebrow {
+  margin: 0 0 0.6rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 0.78rem;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--hiw-gold);
+}
+
+.heading {
+  margin: 0 0 0.75rem;
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  font-size: clamp(2rem, 4vw, 3rem);
+  color: var(--hiw-white);
+}
+
+.subheading {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 1rem;
+  color: var(--hiw-muted);
+}
+
+/* ---------- Steps ---------- */
+
+.stepsList {
+  position: relative;
+  width: 100%;
+  max-width: 64rem;
+  margin: 0 0 6rem;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+}
+
+.stepsLine {
+  position: absolute;
+  top: 1.75rem;
+  left: calc(100% / 6);
+  right: calc(100% / 6);
+  height: 0;
+  border-top: 2px dashed rgba(245, 158, 11, 0.35);
+  z-index: 0;
+}
+
+.step {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0.85rem;
+  opacity: 0;
+  animation: stepFadeIn 0.6s ease forwards;
+  animation-delay: var(--step-delay, 0s);
+}
+
+.stepNumber {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3.5rem;
+  height: 3.5rem;
+  border-radius: 50%;
+  background: #050505; /* Updated from var(--hiw-bg) to force solid pitch-black */
+  border: 2px solid var(--hiw-gold);
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.1rem;
+  color: var(--hiw-gold);
+}
+
+.stepTitle {
+  margin: 0;
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--hiw-white);
+}
+
+.stepDescription {
+  margin: 0;
+  max-width: 18rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  color: var(--hiw-muted);
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ---------- Core Features ---------- */
+
+.featuresHeader {
+  margin-bottom: 2rem;
+}
+
+.featuresHeading {
+  margin: 0;
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 1.15rem;
+  color: var(--hiw-white);
+  text-align: center;
+}
+
+.featuresGrid {
+  width: 100%;
+  max-width: 64rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.25rem;
+}
+
+.featureCard {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.85rem;
+  padding: 1.75rem 1.5rem;
+  background: var(--hiw-surface);
+  border: 1px solid var(--hiw-border);
+  border-radius: 12px;
+  opacity: 0;
+  animation: stepFadeIn 0.6s ease forwards;
+  animation-delay: var(--feature-delay, 0s);
+  transition: border-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.featureCard:hover {
+  border-color: var(--hiw-gold);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(245, 158, 11, 0.12);
+}
+
+.featureIconBadge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.75rem;
+  height: 2.75rem;
+  border-radius: 9px;
+  background: var(--hiw-gold-soft);
+  color: var(--hiw-gold);
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.featureCard:hover .featureIconBadge {
+  background: var(--hiw-gold);
+  color: #050505; /* Clean dark contrast when hovering */
+}
+
+.featureIcon {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+
+.featureTitle {
+  margin: 0;
+  font-family: 'Oswald', 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  font-size: 1.05rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+  color: var(--hiw-white);
+}
+
+.featureDescription {
+  margin: 0;
+  font-family: 'Inter', system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.55;
+  color: var(--hiw-muted);
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 900px) {
+  .featuresGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 720px) {
+  .stepsList {
+    grid-template-columns: 1fr;
+    gap: 2.75rem;
+    margin-bottom: 4rem;
+  }
+
+  .stepsLine {
+    display: none;
+  }
+}
+
+@media (max-width: 520px) {
+  .section {
+    padding: 4.5rem 1.25rem 5rem;
+  }
+
+  .featuresGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------- Accessibility: reduced motion ---------- */
+
+@media (prefers-reduced-motion: reduce) {
+  .step,
+  .featureCard {
+    opacity: 1;
+    animation: none;
+  }
+
+  .featureCard:hover {
+    transform: none;
+  }
+}
